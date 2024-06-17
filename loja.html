@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo img {
+            margin-top: 1%;
+            width: 120px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background-color: #363531;
+            position: relative;
+            color: rgb(243, 178, 38);
+            width: 100%;
+            font-family: Impact;
+            font-size: larger;
+            padding-left: 40px;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .options p {
+            padding: 10px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        .options p:hover {
+         /* Altera a cor de fundo ao passar o mouse */
+        border-radius: 10px;
+        color: #cf4e02;
+        }
+        .options i:hover {
+         /* Altera a cor de fundo ao passar o mouse */
+        border-radius: 10px;
+        color: #cf4e02;
+        }
+        .iconuser,
+        .iconshop {
+            color: rgb(243, 178, 38);
+            font-size: 20px;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .flex-container {
+            width: 200px;
+            background-color: #363531;
+            padding: 10px;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .flex-container h4 {
+            margin-bottom: 10px;
+            color: #fff; /* Cor do texto dos títulos */
+            font-size: 18px; /* Tamanho da fonte dos títulos */
+        }
+
+        .flex-container form,
+        .flex-container div {
+            margin-bottom: 10px;
+        }
+
+        .flex-container a {
+            text-decoration: none;
+            color: #363531; /* Cor do texto dos links */
+            font-size: 16px; /* Tamanho da fonte dos links */
+            padding: 5px;
+            background-color: rgb(243, 178, 38); /* Fundo dos links */
+            border-radius: 5px; /* Borda arredondada dos links */
+            display: block;
+            margin-bottom: 5px;
+            text-align: center;
+            padding-bottom: 9px;
+        }
+
+        .flex-container a:hover {
+            background-color: #e09b24; /* Fundo dos links ao passar o mouse */
+            color: #ffffff; /* Cor do texto dos links ao passar o mouse */
+        }
+
+        .tshirts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .tshirt {
+            text-align: center;
+            width: 200px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tshirt img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .tshirt h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .tshirt p {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .tshirt button {
+            margin-top: 10px;
+            background-color: #363531;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tshirt button:hover {
+            background-color: rgb(243, 178, 38);
+        }
+        input[type="text"] {
+            border: 1px solid #ccc; /* Borda com cor cinza */
+            border-radius: 5px; /* Borda arredondada */
+            box-sizing: border-box; /* Garante que o padding e a borda não aumentem a largura total */
+        }
+        /* Estilo para a caixa de pesquisa quando está em foco (quando o cursor está dentro dela) */
+        input[type="text"]:focus {
+            outline: none; /* Remove o contorno ao redor da caixa de pesquisa */
+            border-color: #f3b226; /* Muda a cor da borda quando em foco */
+            box-shadow: 0 0 5px rgba(243, 178, 38, 0.5); /* Adiciona uma sombra quando em foco */
+        }
+        .tamanhos {
+            color: #f3b226;
+        }
+        .tshirt .buttonVerMais {
+            color: #363531;
+            background-color: #f9f9f9;
+        }
+
+    </style>
+</head>
+
+<body>
+    <audio src="musica taverna.mp3" autoplay loop></audio>
+    <!--Musica de fundo-->
+    <div class="container" id="container">
+        <div class="logo">
+            <img src="logo lords.png" alt="Logo do site">
+        </div>
+
+        <div class="options">
+            <!-- Aqui está a parte de cima do site, as opções-->
+            <a href="inicio.html" style="text-decoration: none; color: inherit;">
+                <p class="INICIO" id="inicio">INICIO</p>
+            </a>
+            <a href="loja.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="loja">LOJA</p>
+            </a>
+            <a href="ogg.html" style="text-decoration: none; color: inherit;">
+                <p class="ogg" id="ogg">OGG</p>
+            </a>
+            <a href="evento.html" style="text-decoration: none; color: inherit;">
+                <p class="evento" id="evento">EVENTO em breve!</p>
+            </a>
+            <a href="sobre.html" style="text-decoration: none; color: inherit;">
+                <p class="sobre" id="sobre">SOBRE NOS</p>
+            </a>
+            <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 773px;">
+                <i class="fas fa-shopping-cart iconshop"></i>
+                <!-- Ícone de carrinho de compras -->
+            </a>
+            <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
+                <i class="fas fa-user iconuser"></i>
+                <!-- Ícone de usuário -->
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="flex-container">
+            <h4>Pesquisar</h4>
+            <form>
+                <label for="Digite"></label>
+                <input type="text">
+            </form>
+
+            <h4>Tamanhos</h4>
+            <form action="" class="tamanhos">
+                <input type="radio" name="size" id="P"><label for="P">P</label>
+                <input type="radio" name="size" id="M"><label for="M">M</label>
+                <input type="radio" name="size" id="G"><label for="G">G</label>
+                <input type="radio" name="size" id="GG"><label for="GG">GG</label>
+            </form>
+
+            <h4>Categoria de Camisetas</h4>
+            <div><a href="animes.html" style="text-decoration: none;">Animes</a></div>
+            <h4>Quadrinhos</h4>
+            <div><a href="" style="text-decoration: none;">Animes</a></div>
+        </div>
+
+        <div class="tshirts-container">
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaAilos.webp" alt="Camiseta 1">
+                <h3>Camiseta Aiolos</h3>
+                <p>R$ 69,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaAiolia.webp" alt="Camiseta 2">
+                <h3>Camiseta Aiolia</h3>
+                <p>R$ 39,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaHasgard.webp" alt="Camiseta 1">
+                <h3>Camiseta Hasgard</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaKamus.webp" alt="Camiseta 1">
+                <h3>Camiseta Kamus</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaKardia.webp" alt="Camiseta 1">
+                <h3>Camiseta Kardia</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaHyoga.webp" alt="Camiseta 1">
+                <h3>Camiseta Hyoga</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaIkki.webp" alt="Camiseta 1">
+                <h3>Camiseta Ikki</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaAlbafica.webp" alt="Camiseta 1">
+                <h3>Camiseta Albafica</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaDohko.webp" alt="Camiseta 1">
+                <h3>Camiseta Dohko</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaMu.webp" alt="Camiseta 1">
+                <h3>Camiseta Mu</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaRadamanthys.webp" alt="Camiseta 1">
+                <h3>Camiseta Radamanthys</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaManigold.webp" alt="Camiseta 1">
+                <h3>Camiseta Manigold</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaElcid.webp" alt="Camiseta 1">
+                <h3>Camiseta Elcid</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaHades.webp" alt="Camiseta 1">
+                <h3>Camiseta Hades</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaShunAndromeda.webp" alt="Camiseta 1">
+                <h3>Camiseta ShunAndromeda</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaShiryu.webp" alt="Camiseta 1">
+                <h3>Camiseta Shiryu</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaShakka.webp" alt="Camiseta 1">
+                <h3>Camiseta Shakka</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaShion.webp" alt="Camiseta 1">
+                <h3>Camiseta Shion</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaSeiya.webp" alt="Camiseta 1">
+                <h3>Camiseta Seiya</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+            <div class="tshirt">
+                <img src="CamisetasCDZ/CamisetaSaga.webp" alt="Camiseta 1">
+                <h3>Camiseta Saga</h3>
+                <p>R$ 29,99</p>
+                <button>Adicionar ao Carrinho</button>
+                <button class="buttonVerMais" id="buttonVerMais">Ver Mais</button>
+            </div>
+
+
+
+
+            
+
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>

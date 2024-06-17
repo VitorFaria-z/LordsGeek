@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo img {
+            margin-top: 1%;
+            width: 120px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background-color: #363531;
+            position: relative;
+            color: rgb(243, 178, 38);
+            width: 100%;
+            font-family: Impact;
+            font-size: larger;
+            padding-left: 40px;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .options p {
+            padding: 10px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        .options p:hover {
+         /* Altera a cor de fundo ao passar o mouse */
+        border-radius: 10px;
+        color: #cf4e02;
+        }
+        .options i:hover {
+         /* Altera a cor de fundo ao passar o mouse */
+        border-radius: 10px;
+        color: #cf4e02;
+        }
+        .iconuser,
+        .iconshop {
+            color: rgb(243, 178, 38);
+            font-size: 20px;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .flex-container {
+            width: 200px;
+            background-color: #363531;
+            padding: 10px;
+            margin-right: 20px;
+            border-radius: 4px;
+        }
+
+        .flex-container h4 {
+            margin-bottom: 10px;
+            color: #fff; /* Cor do texto dos títulos */
+            font-size: 18px; /* Tamanho da fonte dos títulos */
+        }
+
+        .flex-container form,
+        .flex-container div {
+            margin-bottom: 10px;
+        }
+
+        .flex-container a {
+            text-decoration: none;
+            color: #363531; /* Cor do texto dos links */
+            font-size: 16px; /* Tamanho da fonte dos links */
+            padding: 5px;
+            background-color: rgb(243, 178, 38); /* Fundo dos links */
+            border-radius: 5px; /* Borda arredondada dos links */
+            display: block;
+            margin-bottom: 5px;
+            text-align: center;
+            padding-bottom: 9px;
+        }
+        /*conteudo do fundo do inicio*/
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Para os elementos se ajustarem quando a tela é redimensionada */
+            margin-top: 20px; /* Espaçamento do topo */
+        }
+        .card {
+            width: 700px; /* Largura dos cartões */
+            margin: 20px; /* Espaçamento entre os cartões */
+            background-color: #363531; /* Cor de fundo dos cartões */
+            border-radius: 10px; /* Borda arredondada dos cartões */
+            padding-bottom: 7px; /* Espaçamento interno dos cartões */
+            padding-left: 7px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra dos cartões */
+        }
+        .card h2 {
+            color: rgb(243, 178, 38); /* Cor do título */
+            font-size: 24px; /* Tamanho da fonte do título */
+            margin-bottom: 10px; /* Espaçamento abaixo do título */
+            text-align: center;
+        }
+        .card p {
+            color: #666; /* Cor do texto */
+            font-size: 16px; /* Tamanho da fonte do texto */
+        }
+        .card3 {
+            width: 450px; /* Largura dos cartões */
+            margin: 20px; /* Espaçamento entre os cartões */
+            background-color: #363531; /* Cor de fundo dos cartões */
+            border-radius: 10px; /* Borda arredondada dos cartões */
+            padding: 10px; /* Espaçamento interno dos cartões */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra dos cartões */
+            text-align: center; /* Alinhamento de texto centralizado */
+        }
+        .card3 img {
+            width: 100%; /* Largura da imagem ajustada */
+            max-width: 450px; /* Largura máxima da imagem */
+            margin-left: 0; /* Alinhamento à esquerda */
+            
+        }
+        .card3parte2 {
+            width: 450px; /* Largura dos cartões */
+            margin: 20px; /* Espaçamento entre os cartões */
+            background-color: #363531; /* Cor de fundo dos cartões */
+            border-radius: 10px; /* Borda arredondada dos cartões */
+            padding: 10px; /* Espaçamento interno dos cartões */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra dos cartões */
+            text-align: center; /* Alinhamento de texto centralizado */
+        }
+        .card3parte2 img {
+            width: 100%; /* Largura da imagem ajustada */
+            max-width: 450px; /* Largura máxima da imagem */
+            margin-left: 0; /* Alinhamento à esquerda */
+        }
+        .card3parte1 {
+            width: 700px; /* Largura dos cartões */
+            margin: 20px; /* Espaçamento entre os cartões */
+            border-radius: 0px; /* Borda arredondada dos cartões */
+            padding-bottom: 7px; /* Espaçamento interno dos cartões */
+            padding-left: 7px;
+        }
+        
+        .card3parte1 h2 {
+            color: rgb(187, 18, 18); /* Cor do título */
+            font-size: 24px; /* Tamanho da fonte do título */
+            margin-bottom: 10px; /* Espaçamento abaixo do título */
+            text-align: center;
+        }
+        .card3parte1 p {
+            color: #666; /* Cor do texto */
+            font-size: 16px; /* Tamanho da fonte do texto */
+        }
+        /* transições de imagens css*/
+        .card3parte2 img {
+        width: 100%;
+        max-width: 450px;
+        margin-left: 0;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out; /* Transição suave de opacidade */
+        }
+        .card3parte2 img.hidden {
+        opacity: 0;
+        }
+        /* transições de imagens css*/
+        .containerfinal {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background-color: #363531;
+            position: relative;
+            color: rgb(243, 178, 38);
+            width: 100%;
+            font-family: Impact;
+            font-size: larger;
+            padding-left: 40px;
+        }
+
+
+
+        .optionsfinal p {
+            padding: 5px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .optionsfinal {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        padding-left: 10%;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: #adadad;
+            padding: 20px;
+        }
+        .footer div {
+            flex: 1;
+            margin: 0 10px;
+        }
+        .footer h3 {
+            color: rgb(243, 178, 38);
+        }
+        .footer p {
+            margin: 7px;
+        }
+        .footermeio {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: #adadad;
+            padding: 20px;
+        }
+        .footermeio div {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+        }
+        .footermeio i {
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .footermeio h3 {
+            color: rgb(243, 178, 38);
+        }
+        .footermeio p {
+            margin: 7px;
+        }
+        .main-content a {
+            background-color: rgb(243, 178, 38);
+        }
+        .main-content a:hover{
+            background-color: #e09b24;
+        }
+        .main-content a {
+            color: #363531;
+        }
+        .main-content a:hover{
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<audio src="musica taverna.mp3" autoplay loop></audio>
+    <!--Musica de fundo-->
+    <div class="container" id="container">
+        <div class="logo">
+            <img src="logo lords.png" alt="Logo do site">
+        </div>
+
+        <div class="options">
+            <!-- Aqui está a parte de cima do site, as opções-->
+            <a href="inicio.html" style="text-decoration: none; color: inherit;">
+                <p class="INICIO" id="inicio">INICIO</p>
+            </a>
+
+            <a href="loja.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="loja">LOJA</p>
+            </a>
+
+            <a href="ogg.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="OGG">OGG</p>
+            </a>
+
+            <a href="evento.html" style="text-decoration: none; color: inherit;">
+                <p class="evento" id="evento">EVENTO em breve!</p>
+            </a>
+
+            <a href="sobre.html" style="text-decoration: none; color: inherit;">
+                <p class="sobre" id="sobre">SOBRE NOS</p>
+            </a>
+            <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 773px;">
+                <i class="fas fa-shopping-cart iconshop"></i>
+                <!-- Ícone de carrinho de compras -->
+            </a>
+
+            <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
+                <i class="fas fa-user iconuser"></i>
+                <!-- Ícone de usuário -->
+            </a>
+        </div>
+    </div>
+    <main style="background-image: url(fundolords.webp); background-size: cover; background-position: center; padding-top: 1%; padding-bottom: 200px;">    
+        <div class="main-content">
+            <div class="card3parte1">
+                <h2 style=" text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; font-size: 270%;">EM BREVE!</h2>
+                <p style="color: #fff; text-align: center; font-size: 250%; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; margin: 30px; ">A Lord's Geek anunciará o próximo evento em qual compareceram, fique por dentro das nossas redes sociais!</p>
+            </div>
+    </main>
+    <!-- Conteúdo adicional começa aqui -->
+    <main style="background-image: url(fundolords.webp); background-size: cover; background-position: center; padding-top: 1%;">    
+        <div class="main-content">
+
+            <!--horario e personagens-->
+            <img src="Lordsfundopersonagens.webp" alt="">
+            </div>
+            <!--horario e personagens-->
+    </main>
+
+
+<script>
+// JavaScript para alternar entre as imagens com transição
+document.addEventListener("DOMContentLoaded", function() {
+    const imagens = ["camisa1.png","colar4.png", "chaveiro2.png", "bone3.png","mini2.png"]; // Lista de imagens a serem alternadas
+    const imgElement = document.querySelector(".card3parte2 img"); // Seleciona a imagem dentro da div
+    let currentImageIndex = 0;
+
+    function trocarImagem() {
+        // Adiciona a classe 'hidden' à imagem atual para torná-la invisível durante a transição
+        imgElement.classList.add("hidden");
+        
+        // Troca a imagem após um curto período de tempo (500ms)
+        setTimeout(function() {
+            imgElement.src = imagens[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % imagens.length;
+            
+            // Remove a classe 'hidden' para tornar a nova imagem visível com a transição
+            imgElement.classList.remove("hidden");
+        }, 500);
+    }
+
+    // Chama a função de troca de imagem inicialmente
+    trocarImagem();
+
+    // Define um temporizador para chamar a função de troca de imagem a cada 3 segundos (3000ms)
+    setInterval(trocarImagem, 3000);
+});
+
+// JavaScript para alternar entre as imagens da camisa com transição
+document.addEventListener("DOMContentLoaded", function() {
+    const imagensCamisa = ["CamisaDigimon2.webp", "CamisaGuy.webp"]; // Lista de imagens da camisa a serem alternadas
+    const imgCamisaElement = document.querySelector(".trocaCamisa1 img"); // Seleciona a imagem da camisa dentro da div
+    let currentCamisaImageIndex = 0;
+
+    function trocarImagemCamisa() {
+        imgCamisaElement.classList.add("hidden");
+        
+        setTimeout(function() {
+            imgCamisaElement.src = imagensCamisa[currentCamisaImageIndex];
+            currentCamisaImageIndex = (currentCamisaImageIndex + 1) % imagensCamisa.length;
+            imgCamisaElement.classList.remove("hidden");
+        }, 500);
+    }
+
+    trocarImagemCamisa();
+
+    setInterval(trocarImagemCamisa, 3000); // Define um temporizador para chamar a função de troca de imagem a cada 3 segundos (3000ms)
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const imagensCamisa = ["CamisaGuy.webp", "CamisaDigimon2.webp"]; // Lista de imagens da camisa a serem alternadas
+    const imgCamisaElement = document.querySelector(".trocaCamisa2 img"); // Seleciona a imagem da camisa dentro da div
+    let currentCamisaImageIndex = 0;
+
+    function trocarImagemCamisa() {
+        imgCamisaElement.classList.add("hidden");
+        
+        setTimeout(function() {
+            imgCamisaElement.src = imagensCamisa[currentCamisaImageIndex];
+            currentCamisaImageIndex = (currentCamisaImageIndex + 1) % imagensCamisa.length;
+            imgCamisaElement.classList.remove("hidden");
+        }, 500);
+    }
+
+    trocarImagemCamisa();
+
+    setInterval(trocarImagemCamisa, 3000); // Define um temporizador para chamar a função de troca de imagem a cada 3 segundos (3000ms)
+});
+// JavaScript para alternar entre as imagens da camisa com transição
+
+
+
+</script>
+
+
+<!--barra na parte final da pagina-->
+<div class="footer">
+    <div>
+        <h3>Lord's Geek</h3>
+        <a href="inicio.html" style="text-decoration: none; color: #adadad;" >
+        <p>Home</p>
+        </a>
+        <a href="loja.html" style="text-decoration: none; color: #adadad;" >
+        <p>Loja</p>
+        </a>
+        <a href="sobre.html" style="text-decoration: none; color: #adadad;" >
+        <p>Sobre</p>
+        </a>
+        <p>Contato</p>
+    </div>
+    <div>
+        <h3>Experiência</h3>
+        <p>FAQ</p>
+        <p>Envio e Devoluções</p>
+        <p>Política da Loja</p>
+        <p>Métodos de Pagamento</p>
+    </div>
+    <div>
+        <h3>Siga-nos</h3>
+        <a href="https://www.instagram.com/lordsgeek.sc/" style="text-decoration: none; color: #adadad;;">
+        <p>Instagram</p>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61558965792629" style="text-decoration: none; color: #adadad;">
+        <p>Facebook</p>
+        </a>
+    </div>
+</div>
+<!--barra na parte final da pagina-->
+
+</body>
+
+</html>

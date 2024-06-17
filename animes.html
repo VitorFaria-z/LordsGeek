@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="module">
+        // Verifica o estado de autenticação do usuário
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Usuário está logado
+                console.log('Usuário está logado:', user);
+    
+                // Exibe informações do usuário logado
+                const userInfo = document.getElementById('user-info');
+                userInfo.textContent = `Logado como: ${user.displayName || user.email}`;
+    
+                // Adicione um botão de logout, se necessário
+                const logoutBtn = document.createElement('button');
+                logoutBtn.textContent = 'Logout';
+                logoutBtn.addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        console.log('Logout realizado.');
+                        // Atualiza a página após o logout, se necessário
+                        window.location.reload();
+                    }).catch((error) => {
+                        console.error('Erro ao fazer logout:', error);
+                    });
+                });
+                userInfo.appendChild(logoutBtn);
+            } else {
+                // Usuário não está logado
+                console.log('Usuário não está logado.');
+    
+                // Limpa informações do usuário
+                const userInfo = document.getElementById('user-info');
+                userInfo.textContent = '';
+            }
+        });
+    </script>
+    
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Seu CSS existente */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo img {
+            margin-top: 1%;
+            width: 120px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background-color: #363531;
+            position: relative;
+            color: rgb(243, 178, 38);
+            width: 100%;
+            font-family: Impact;
+            font-size: larger;
+            padding-left: 40px;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding-left: 10%;
+        }
+
+        .options p {
+            padding: 10px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .options p:hover {
+            /* Altera a cor de fundo ao passar o mouse */
+            border-radius: 10px;
+            color: #cf4e02;
+        }
+
+        .options i:hover {
+            /* Altera a cor de fundo ao passar o mouse */
+            border-radius: 10px;
+            color: #cf4e02;
+        }
+
+        .iconuser,
+        .iconshop {
+            color: rgb(243, 178, 38);
+            font-size: 20px;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .flex-container {
+            width: 200px;
+            background-color: #363531;
+            padding: 10px;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .flex-container h4 {
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .flex-container form,
+        .flex-container div {
+            margin-bottom: 10px;
+        }
+
+        .flex-container a {
+            text-decoration: none;
+            color: #363531;
+            font-size: 16px;
+            padding: 5px;
+            background-color: rgb(243, 178, 38);
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 5px;
+            text-align: center;
+            padding-bottom: 9px;
+        }
+
+        .flex-container a:hover {
+            background-color: #e09b24;
+            color: #ffffff;
+        }
+
+        .tshirts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .tshirt {
+            text-align: center;
+            width: 200px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tshirt img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .tshirt h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .tshirt p {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .tshirt button {
+            margin-top: 10px;
+            background-color: #363531;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tshirt button:hover {
+            background-color: rgb(243, 178, 38);
+        }
+
+        input[type="text"] {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #f3b226;
+            box-shadow: 0 0 5px rgba(243, 178, 38, 0.5);
+        }
+
+        .tamanhos {
+            color: #f3b226;
+        }
+
+        .tshirt .buttonVerMais {
+            color: #363531;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="musica taverna.mp3" autoplay loop></audio>
+    <div class="container" id="container">
+        <div class="logo">
+            <img src="logo lords.png" alt="Logo do site">
+        </div>
+        <div class="options">
+            <a href="inicio.html" style="text-decoration: none; color: inherit;">
+                <p class="INICIO" id="inicio">INICIO</p>
+            </a>
+            <a href="loja.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="loja">LOJA</p>
+            </a>
+            <a href="ogg.html" style="text-decoration: none; color: inherit;">
+                <p class="ogg" id="ogg">OGG</p>
+            </a>
+            <a href="evento.html" style="text-decoration: none; color: inherit;">
+                <p class="evento" id="evento">EVENTO em breve!</p>
+            </a>
+            <a href="sobre.html" style="text-decoration: none; color: inherit;">
+                <p class="sobre" id="sobre">SOBRE NOS</p>
+            </a>
+            <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 773px;">
+                <i class="fas fa-shopping-cart iconshop"></i>
+            </a>
+            <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
+                <i class="fas fa-user iconuser"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="flex-container">
+            <h4>Pesquisar</h4>
+            <form>
+                <label for="Digite"></label>
+                <input type="text">
+            </form>
+
+            <h4>Tamanhos</h4>
+            <form action="" class="tamanhos">
+                <input type="radio" name="size" id="P"><label for="P">P</label>
+                <input type="radio" name="size" id="M"><label for="M">M</label>
+                <input type="radio" name="size" id="G"><label for="G">G</label>
+                <input type="radio" name="size" id="GG"><label for="GG">GG</label>
+            </form>
+
+            <h4>Categoria de camisetas</h4>
+            <div><a href="#" onclick="filterTshirts('cdz')">Lançamentos</a></div>
+            <div><a href="#" onclick="filterTshirts('bleach')">Bleach</a></div>
+            <div><a href="#" onclick="filterTshirts('cdz')">Cavaleiros do Zodíaco</a></div>
+            <div><a href="#" onclick="filterTshirts('death')">DeathNote</a></div>
+            <div><a href="#" onclick="filterTshirts('digimon')">Digimon</a></div>
+            <div><a href="#" onclick="filterTshirts('dragon')">Dragon Ball</a></div>
+            <div><a href="#" onclick="filterTshirts('hunter')">HunterxHunter</a></div>
+            <div><a href="#" onclick="filterTshirts('jujutsu')">Jujutsu Kaisen</a></div>
+            <div><a href="#" onclick="filterTshirts('nanatsu')">Nanatsu No Taizai</a></div>
+            <div><a href="#" onclick="filterTshirts('naruto')">Naruto</a></div>
+            <div><a href="#" onclick="filterTshirts('onepiece')">One Piece</a></div>
+            <div><a href="#" onclick="filterTshirts('ragnarok')">Ragnarok</a></div>
+            <div><a href="#" onclick="filterTshirts('shingeki')">Shingeki No Kiojin</a></div>
+            <div><a href="#" onclick="filterTshirts('sololeveling')">Solo Leveling</a></div>
+            <div><a href="#" onclick="filterTshirts('theking')">The King Of Fighters</a></div>
+            <div><a href="#" onclick="filterTshirts('yuyuhakusho')">Yu-Yu-Hakusho</a></div>
+            <!-- Adicione mais categorias conforme necessário -->
+        </div>
+        <div class="tshirts-container" id="tshirts-container">
+            <div class="tshirt" data-category="cdz">
+                <img src="CamisetasZoom/CamisetaAilosZoomFrente.webp" alt="Camiseta 3">
+                <h3>Camiseta Ailos</h3>
+                <p>R$ 59,99</p>
+                <button onclick="verMais('Aiolos')">Ver Mais</button>
+            </div>
+            <div class="tshirts-container" id="tshirts-container">
+                <div class="tshirt" data-category="bleach">
+                    <img src="CamisetasBleach/CamisetaIchigo.webp" alt="Camiseta 3">
+                    <h3>Camiseta Ichigo</h3>
+                    <p>R$ 59,99</p>
+                    <button onclick="verMais('Ichigo')">Ver Mais</button>
+                </div>
+            <!-- Adicione mais camisetas conforme necessário -->
+            
+        </div>
+    </div>
+
+    <script>
+        function verMais(camiseta) {
+            window.location.href = `detalhes_camiseta.html?camiseta=${camiseta}`;
+        }
+
+        function filterTshirts(category) {
+            const allTshirts = document.querySelectorAll('.tshirt');
+            allTshirts.forEach(tshirt => {
+                if (category === 'all' || tshirt.getAttribute('data-category') === category) {
+                    tshirt.style.display = 'block';
+                } else {
+                    tshirt.style.display = 'none';
+                }
+            });
+        }
+
+        // Inicializa mostrando as camisetas cdz
+        filterTshirts('cdz');
+    </script>
+</body>
+
+</html>

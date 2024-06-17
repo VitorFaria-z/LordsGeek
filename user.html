@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Seu código de estilo existente */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo img {
+            margin-top: 1%;
+            width: 120px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background-color: #363531;
+            position: relative;
+            color: rgb(243, 178, 38);
+            width: 100%;
+            font-family: Impact;
+            font-size: larger;
+            padding-left: 40px;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .options p {
+            padding: 10px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        .options p:hover {
+         /* Altera a cor de fundo ao passar o mouse */
+        border-radius: 10px;
+        color: #cf4e02;
+        }
+        .options i:hover {
+         /* Altera a cor de fundo ao passar o mouse */
+        border-radius: 10px;
+        color: #cf4e02;
+        }
+        .iconuser,
+        .iconshop {
+            color: rgb(243, 178, 38);
+            font-size: 20px;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .flex-container {
+            width: 200px;
+            background-color: #363531;
+            padding: 10px;
+            margin-right: 20px;
+            border-radius: 4px;
+        }
+
+        .flex-container h4 {
+            margin-bottom: 10px;
+            color: #fff; /* Cor do texto dos títulos */
+            font-size: 18px; /* Tamanho da fonte dos títulos */
+        }
+
+        .flex-container form,
+        .flex-container div {
+            margin-bottom: 10px;
+        }
+
+        .flex-container a {
+            text-decoration: none;
+            color: #363531; /* Cor do texto dos links */
+            font-size: 16px; /* Tamanho da fonte dos links */
+            padding: 5px;
+            background-color: rgb(243, 178, 38); /* Fundo dos links */
+            border-radius: 5px; /* Borda arredondada dos links */
+            display: block;
+            margin-bottom: 5px;
+            text-align: center;
+            padding-bottom: 9px;
+        }
+
+
+        
+    </style>
+    <!-- Adicione o script de configuração do Firebase aqui -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    
+        const firebaseConfig = {
+        apiKey: "AIzaSyDmJEyfaSfTQdyiGka6EDKWPCoGYrWUWWg",
+        authDomain: "lordsgeek-14c4f.firebaseapp.com",
+        projectId: "lordsgeek-14c4f",
+        storageBucket: "lordsgeek-14c4f.appspot.com",
+        messagingSenderId: "44590993034",
+        appId: "1:44590993034:web:576f27dc94159d92226773",
+        measurementId: "G-PJ4QVRS9LX"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Função para verificar o estado de autenticação atual
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("Usuário logado: ", user);
+                // Exiba informações do usuário onde necessário
+                document.getElementById('user-info').textContent = `Bem-vindo, ${user.displayName}`;
+            } else {
+                console.log("Usuário não está logado.");
+                // Redirecione para a página de login ou faça algo apropriado
+            }
+        });
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const googleSignInBtn = document.getElementById('googleSignInBtn');
+            googleSignInBtn.addEventListener('click', function() {
+                const provider = new GoogleAuthProvider();
+                signInWithPopup(auth, provider)
+                    .then((result) => {
+                        const user = result.user;
+                        console.log("Usuário logado: ", user);
+                        // Redirecione para outra página
+                        window.location.href = "http://127.0.0.1:5500/loja.html"; // Substitua pela URL da página de destino
+                    })
+                    .catch((error) => {
+                        console.error("Erro ao fazer login: ", error);
+                    });
+            });
+        });
+    </script>
+    
+</head>
+<body>
+
+<div class="container">
+    <!-- Seu código HTML existente -->
+    <audio src="musica taverna.mp3" autoplay loop></audio>
+    <!--Musica de fundo-->
+    <div class="container" id="container">
+        <div class="logo">
+            <img src="logo lords.png" alt="Logo do site">
+        </div>
+
+        <div class="options">
+            <!-- Aqui está a parte de cima do site, as opções-->
+            <a href="inicio.html" style="text-decoration: none; color: inherit;">
+                <p class="INICIO" id="inicio">INICIO</p>
+            </a>
+            <a href="loja.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="loja">LOJA</p>
+            </a>
+            <a href="ogg.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="OGG">OGG</p>
+            </a>
+            <a href="evento.html" style="text-decoration: none; color: inherit;">
+                <p class="evento" id="evento">EVENTO em breve!</p>
+            </a>
+            <a href="sobre.html" style="text-decoration: none; color: inherit;">
+                <p class="sobre" id="sobre">SOBRE NOS</p>
+            </a>
+            <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 773px;">
+                <i class="fas fa-shopping-cart iconshop"></i>
+                <!-- Ícone de carrinho de compras -->
+            </a>
+            <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
+                <i class="fas fa-user iconuser"></i>
+                <!-- Ícone de usuário -->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="main_content">
+    <div class="form_container">
+        <div class="title_container">
+            <h1 class="title">Bem-vindo de volta!</h1>
+            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="separator">
+            <div class="line"></div>
+            <p>ou</p>
+            <div class="line"></div>
+        </div>
+
+        <a class="sign-in_ggl" id="googleSignInBtn"><i class="fab fa-google"></i>Sign in with Google</a>
+        <button class="sign-in_apl"><i class="fab fa-facebook"></i>Sign in with Facebook</button>
+
+        <p class="note"><a href="#">Criar Conta</a></p>
+        <p class="note"><a href="#">Esqueceu a senha?</a></p>
+        <p id="user-info" class="note"></p> <!-- Adicionado para exibir informações do usuário -->
+    </div>
+</div>
+
+<div class="footer">
+    <!-- Seu código HTML existente -->
+</div>
+
+</body>
+</html>

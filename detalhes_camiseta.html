@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    
+    <meta charset="UTF-8">
+    <title>Loja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo img {
+            margin-top: 1%;
+            width: 120px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background-color: #363531;
+            position: relative;
+            color: rgb(243, 178, 38);
+            width: 100%;
+            font-family: Impact;
+            font-size: larger;
+            padding-left: 40px;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding-left: 10%;
+        }
+
+        .options p {
+            padding: 10px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .options p:hover {
+            border-radius: 10px;
+            color: #cf4e02;
+        }
+
+        .iconuser,
+        .iconshop {
+            color: rgb(243, 178, 38);
+            font-size: 20px;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            width: 700px;
+            margin: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding-bottom: 7px;
+            padding-left: 7px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01), 0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09), 0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+            padding-right: 15px;
+        }
+
+        .card img {
+            width: 50%;
+            height: auto;
+        }
+
+        .card h2 {
+            color: rgb(243, 178, 38);
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .buttons {
+            padding: 20px;
+            margin: 15px;
+            color: rgb(243, 178, 38);
+            background-color: #363531;
+            border-radius: 10px;
+        }
+
+        .buttons:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        .buy {
+            padding: 30px;
+            margin-top: 100px;
+            margin-left: 20px;
+            color: #363531;
+            background-color: rgb(243, 178, 38);
+            border-radius: 10px;
+        }
+
+        .buy:hover {
+            color: #ffffff;
+        }
+
+        .botoes {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 20px;
+        }
+
+        .botoes h4 {
+            margin-bottom: 10px;
+            color: #363531;
+        }
+
+        .tamanhos {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tamanhos input[type="radio"] {
+            display: none;
+        }
+
+        .tamanhos label {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid #363531;
+            border-radius: 5px;
+            color: rgb(243, 178, 38);
+            background-color: #363531;
+        }
+
+        .tamanhos input[type="radio"]:checked+label {
+            background-color: rgb(243, 178, 38);
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body onload="carregarDetalhesCamiseta()">
+    <audio src="musica taverna.mp3" autoplay loop></audio>
+    <div class="container" id="container">
+        <div class="logo">
+            <img src="logo lords.png" alt="Logo do site">
+        </div>
+        <div class="options">
+            <a href="inicio.html" style="text-decoration: none; color: inherit;">
+                <p class="INICIO" id="inicio">INICIO</p>
+            </a>
+            <a href="loja.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="loja">LOJA</p>
+            </a>
+            <a href="ogg.html" style="text-decoration: none; color: inherit;">
+                <p class="ogg" id="ogg">OGG</p>
+            </a>
+            <a href="evento.html" style="text-decoration: none; color: inherit;">
+                <p class="evento" id="evento">EVENTO em breve!</p>
+            </a>
+            <a href="sobre.html" style="text-decoration: none; color: inherit;">
+                <p class="sobre" id="sobre">SOBRE NOS</p>
+            </a>
+            <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 773px;">
+                <i class="fas fa-shopping-cart iconshop"></i>
+            </a>
+            <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
+                <i class="fas fa-user iconuser"></i>
+            </a>
+        </div>
+    </div>
+    <main style="background-size: cover; background-position: center; padding-top: 1%;">
+        <div class="main-content">
+            <div class="card">
+                <img id="imagem_camiseta_frente" src="" alt="Camisa Aiolos (Frente)">
+                <img id="imagem_camiseta_costa" src="" alt="Camisa Aiolos (Costa)">
+                <div class="botoes">
+                    <h2 id="nome_camiseta"></h2>
+                    <h4>Tamanhos</h4>
+                    <form action="" class="tamanhos">
+                        <input type="radio" name="size" id="P"><label for="P">P</label>
+                        <input type="radio" name="size" id="M"><label for="M">M</label>
+                        <input type="radio" name="size" id="G"><label for="G">G</label>
+                        <input type="radio" name="size" id="GG"><label for="GG">GG</label>
+                    </form>
+
+                    <button class="buttons add-to-cart" style="border: none;">Adicionar no carrinho</button>
+                    <a href="animes.html">
+                        <button class="buttons" style="border: none">Voltar para a Loja</button>
+                    </a>
+                    <button class="buy" style="border: none">COMPRAR</button>
+                    <p id="valor_camiseta" style="padding-left: 40px; padding-top: 20px;">Valor 110,00</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Carregar detalhes da camiseta
+        function carregarDetalhesCamiseta() {
+            const params = new URLSearchParams(window.location.search);
+            const camiseta = params.get('camiseta');
+
+            if (camiseta) {
+                exibirDetalhesCamiseta(camiseta);
+            } else {
+                document.getElementById("imagem_camiseta_frente").alt = "Camiseta não encontrada";
+                document.getElementById("imagem_camiseta_frente").src = "";
+                document.getElementById("imagem_camiseta_costa").alt = "Camiseta não encontrada";
+                document.getElementById("imagem_camiseta_costa").src = "";
+            }
+        }
+
+        // Exibir detalhes da camiseta
+        function exibirDetalhesCamiseta(camiseta) {
+            let camisetaDetalhes = {};
+
+            if (camiseta === "Aiolos") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Aiolos",
+                    frente: "CamisetasZoom/CamisetaAilosZoomFrente.webp",
+                    costa: "CamisetasZoom/CamisetaAilosZoomCosta.webp",
+                    preco: 110.00
+                };
+            } else if (camiseta === "Aiolia") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Aiolia",
+                    frente: "CamisetasZoom/CamisetaAioliaZoomFrente.webp",
+                    costa: "CamisetasZoom/CamisetaAioliaZoomCosta.webp",
+                    preco: 110.00
+                };
+            } else {
+                document.getElementById("imagem_camiseta_frente").alt = "Camiseta não encontrada";
+                document.getElementById("imagem_camiseta_frente").src = "";
+                document.getElementById("imagem_camiseta_costa").alt = "Camiseta não encontrada";
+                document.getElementById("imagem_camiseta_costa").src = "";
+                return;
+            }
+
+            document.getElementById("imagem_camiseta_frente").alt = camisetaDetalhes.nome + " (Frente)";
+            document.getElementById("imagem_camiseta_frente").src = camisetaDetalhes.frente;
+            document.getElementById("imagem_camiseta_costa").alt = camisetaDetalhes.nome + " (Costa)";
+            document.getElementById("imagem_camiseta_costa").src = camisetaDetalhes.costa;
+            document.getElementById("valor_camiseta").innerText = "Valor: R$ " + camisetaDetalhes.preco.toFixed(2);
+            document.getElementById("nome_camiseta").innerText = camisetaDetalhes.nome; // Definindo o nome da camiseta
+        }
+
+        // Adicionar item ao carrinho
+        function adicionarAoCarrinho() {
+            const params = new URLSearchParams(window.location.search);
+            const camiseta = params.get('camiseta');
+            const tamanho = document.querySelector('input[name="size"]:checked');
+
+            if (!camiseta || !tamanho) {
+                alert('Por favor, selecione um tamanho antes de adicionar ao carrinho.');
+                return;
+            }
+
+            let camisetaDetalhes = {};
+
+            if (camiseta === "Aiolos") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Aiolos",
+                    preco: 110.00
+                };
+            } else if (camiseta === "Aiolia") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Aiolia",
+                    preco: 110.00
+                };
+            }
+
+            let item = {
+                nome: camisetaDetalhes.nome,
+                tamanho: tamanho.id,
+                quantidade: 1,
+                preco: camisetaDetalhes.preco
+            };
+
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+            // Verifica se o item já existe no carrinho
+            let itemExistente = carrinho.find(i => i.nome === item.nome && i.tamanho === item.tamanho);
+            if (itemExistente) {
+                itemExistente.quantidade += 1;
+            } else {
+                carrinho.push(item);
+            }
+
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            alert('Item adicionado ao carrinho!');
+        }
+
+        // Event listener para adicionar ao carrinho
+        document.addEventListener('DOMContentLoaded', function () {
+            carregarDetalhesCamiseta();
+            document.querySelector('.add-to-cart').addEventListener('click', adicionarAoCarrinho);
+        });
+    </script>
+</body>
+
+</html>

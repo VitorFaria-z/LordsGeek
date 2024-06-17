@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo img {
+            margin-top: 1%;
+            width: 120px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            background-color: #363531;
+            position: relative;
+            color: rgb(243, 178, 38);
+            width: 100%;
+            font-family: Impact;
+            font-size: larger;
+            padding-left: 40px;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding-left: 10%;
+        }
+
+        .options p {
+            padding: 10px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .options p:hover {
+            border-radius: 10px;
+            color: #cf4e02;
+        }
+
+        .options i:hover {
+            border-radius: 10px;
+            color: #cf4e02;
+        }
+
+        .iconuser,
+        .iconshop {
+            color: rgb(243, 178, 38);
+            font-size: 20px;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .flex-container {
+            width: 200px;
+            background-color: #363531;
+            padding: 10px;
+            margin-right: 20px;
+            border-radius: 4px;
+        }
+
+        .flex-container h4 {
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .flex-container form,
+        .flex-container div {
+            margin-bottom: 10px;
+        }
+
+        .flex-container a {
+            text-decoration: none;
+            color: #363531;
+            font-size: 16px;
+            padding: 5px;
+            background-color: rgb(243, 178, 38);
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 5px;
+            text-align: center;
+            padding-bottom: 9px;
+        }
+
+        .flex-container a:hover {
+            background-color: #e09b24;
+            color: #ffffff;
+        }
+
+        .carrinho-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carrinho-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .carrinho-item:last-child {
+            border-bottom: none;
+        }
+
+        .carrinho-item h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .carrinho-item p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .carrinho-item button {
+            background-color: #363531;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carrinho-item button:hover {
+            background-color: rgb(243, 178, 38);
+        }
+
+        .carrinho-vazio {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .total-container {
+            text-align: right;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="musica taverna.mp3" autoplay loop></audio>
+    <div class="container" id="container">
+        <div class="logo">
+            <img src="logo lords.png" alt="Logo do site">
+        </div>
+        <div class="options">
+            <a href="inicio.html" style="text-decoration: none; color: inherit;">
+                <p class="INICIO" id="inicio">INICIO</p>
+            </a>
+            <a href="loja.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="loja">LOJA</p>
+            </a>
+            <a href="ogg.html" style="text-decoration: none; color: inherit;">
+                <p class="loja" id="OGG">OGG</p>
+            </a>
+            <a href="evento.html" style="text-decoration: none; color: inherit;">
+                <p class="evento" id="evento">EVENTO em breve!</p>
+            </a>
+            <a href="sobre.html" style="text-decoration: none; color: inherit;">
+                <p class="sobre" id="sobre">SOBRE NOS</p>
+            </a>
+            <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 773px;">
+                <i class="fas fa-shopping-cart iconshop"></i>
+            </a>
+            <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
+                <i class="fas fa-user iconuser"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="carrinho-container">
+        <h1>Carrinho de Compras</h1>
+        <div id="carrinho"></div>
+        <div class="total-container" id="total"></div>
+    </div>
+
+    <script>
+        function carregarCarrinho() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            let carrinhoDiv = document.getElementById('carrinho');
+            let totalDiv = document.getElementById('total');
+            let total = 0;
+
+            carrinhoDiv.innerHTML = '';
+
+            if (carrinho.length === 0) {
+                carrinhoDiv.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio.</p>';
+                totalDiv.innerHTML = '';
+                return;
+            }
+
+            carrinho.forEach(item => {
+                let itemDiv = document.createElement('div');
+                itemDiv.classList.add('carrinho-item');
+                let precoTotalItem = item.preco * item.quantidade;
+                total += precoTotalItem;
+
+                itemDiv.innerHTML = `
+                    <h2>${item.nome} - Tamanho: ${item.tamanho}</h2>
+                    <p>Quantidade: ${item.quantidade}</p>
+                    <p>Preço: R$ ${precoTotalItem.toFixed(2)}</p>
+                    <button onclick="removerItem('${item.nome}', '${item.tamanho}')">Remover</button>
+                `;
+                carrinhoDiv.appendChild(itemDiv);
+            });
+
+            // Adiciona o total ao final do carrinho
+            totalDiv.innerHTML = `<h3>Total: R$ ${total.toFixed(2)}</h3>`;
+        }
+
+        function removerItem(nome, tamanho) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            carrinho = carrinho.filter(item => !(item.nome === nome && item.tamanho === tamanho));
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            carregarCarrinho();
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarCarrinho);
+    </script>
+</body>
+
+</html>
