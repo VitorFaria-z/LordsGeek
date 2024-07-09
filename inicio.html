@@ -216,19 +216,24 @@
         padding-left: 10%;
         }
         .footer {
-            display: flex;
-            justify-content: space-between;
             background-color: #333;
             color: #adadad;
             padding: 20px;
+            width: 100%;
+            text-align: center;
+            bottom: 0;
+            display: flex;
+            justify-content: space-around; /* Distribui os itens uniformemente */
         }
+
         .footer div {
-            flex: 1;
             margin: 0 10px;
         }
+
         .footer h3 {
             color: rgb(243, 178, 38);
         }
+
         .footer p {
             margin: 7px;
         }
@@ -283,7 +288,7 @@
                 <p class="INICIO" id="inicio">INICIO</p>
             </a>
 
-            <a href="loja.html" style="text-decoration: none; color: inherit;">
+            <a href="animes.html" style="text-decoration: none; color: inherit;">
                 <p class="loja" id="loja">LOJA</p>
             </a>
 
@@ -326,7 +331,7 @@
 
                 <h2 style=" text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">LANÇAMENTOS</h2>
                 <p style="color: #000000; text-align: center;">Olhe o que há de novidade!</p>
-                <a href="loja.html" style="text-decoration: none; padding: 20px; border-radius: 8px;"> Ver Produtos </a>
+                <a href="animes.html" style="text-decoration: none; padding: 20px; border-radius: 8px;"> Ver Produtos </a>
             </div>
 
             <div class="card">
@@ -337,7 +342,7 @@
 
                 <h2 style=" text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">MAIS POPULARES</h2>
                 <p style="color: #000000; text-align: center;">Confira nossos produtos mais populares.</p>
-                <a href="loja.html" style=" text-decoration: none; padding: 20px; border-radius: 8px;"> Ver Populares </a>
+                <a href="animes.html" style=" text-decoration: none; padding: 20px; border-radius: 8px;"> Ver Populares </a>
             </div>
             <!--horario e personagens-->
             <div class="card3">
@@ -501,32 +506,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 </div>
 <!--barra na parte final da pagina-->
-<p id="user-info" class="note"></p>
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyDmJEyfaSfTQdyiGka6EDKWPCoGYrWUWWg",
-        authDomain: "lordsgeek-14c4f.firebaseapp.com",
-        projectId: "lordsgeek-14c4f",
-        storageBucket: "lordsgeek-14c4f.appspot.com",
-        messagingSenderId: "44590993034",
-        appId: "1:44590993034:web:576f27dc94159d92226773",
-        measurementId: "G-PJ4QVRS9LX"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            document.getElementById('user-info').textContent = `Bem-vindo, ${user.displayName}`;
-        } else {
-            console.log("Usuário não está logado.");
-            // Redirecione para a página de login ou faça algo apropriado
-        }
-    });
 </script>
 
 

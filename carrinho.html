@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 
 <head>
-
-    
-</script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
@@ -19,6 +19,7 @@
         body {
             background-color: #ffffff;
             font-family: Arial, sans-serif;
+            background-image: url(fundolords.webp);
         }
 
         .logo img {
@@ -181,7 +182,7 @@
             <a href="inicio.html" style="text-decoration: none; color: inherit;">
                 <p class="INICIO" id="inicio">INICIO</p>
             </a>
-            <a href="loja.html" style="text-decoration: none; color: inherit;">
+            <a href="animes.html" style="text-decoration: none; color: inherit;">
                 <p class="loja" id="loja">LOJA</p>
             </a>
             <a href="ogg.html" style="text-decoration: none; color: inherit;">
@@ -206,9 +207,17 @@
         <h1>Carrinho de Compras</h1>
         <div id="carrinho"></div>
         <div class="total-container" id="total"></div>
+        <div class="total-container" id="total">
+            <button id="btn-pagar-pix">Pagar com PIX</button>
+            <div id="qrcode-container"></div> <!-- Container para o QR Code -->
+            <div id="cartao-container" style="display: none;">
+                <!-- Formulário para pagamento com cartão -->
+            </div>
+        </div>
     </div>
-
     <script>
+        // Funções JavaScript aqui
+
         function carregarCarrinho() {
             let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
             let carrinhoDiv = document.getElementById('carrinho');
@@ -238,19 +247,107 @@
                 carrinhoDiv.appendChild(itemDiv);
             });
 
-            // Adiciona o total ao final do carrinho
-            totalDiv.innerHTML = `<h3>Total: R$ ${total.toFixed(2)}</h3>`;
+            totalDiv.innerHTML = `<h3>Total: R$ <span id="total-valor">${total.toFixed(2)}</span></h3>`;
+        }
+
+        function pagarComPIX() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            let total = parseFloat(document.getElementById('total-valor').textContent);
+
+            // Construir mensagem para o WhatsApp com os itens do carrinho
+            let mensagem = `Olá! Estou fazendo um pedido pelo site e gostaria de pagar com PIX, itens do pedido: `;
+            carrinho.forEach(item => {
+                mensagem += `- ${item.nome} (Tamanho: ${item.tamanho})  Quantidade: ${item.quantidade}`;
+            });
+            mensagem += ` Total: R$ ${total.toFixed(2)}`;
+
+            // Número de telefone (substitua com o seu número)
+            let telefone = '47984994693';
+
+            // Montar o link para o WhatsApp
+            let linkWhatsApp = `https://wa.me/${5547984994693}/?text=${encodeURIComponent(mensagem)}`;
+
+            // Abrir o link no WhatsApp
+            window.open(linkWhatsApp, '_blank');
+
+            // Limpar o carrinho após o pagamento, se necessário
+            localStorage.removeItem('carrinho');
+            carregarCarrinho(); // Atualiza a interface após o pagamento
+        }
+
+        function pagarComCartao(event) {
+            event.preventDefault();
+            let total = parseFloat(document.getElementById('total-valor').textContent);
+            // Simulação de processamento do pagamento com cartão
+            alert(`Pagamento de R$ ${total.toFixed(2)} realizado com sucesso com o cartão de crédito!`);
+
+            // Limpar o carrinho após o pagamento, se necessário
+            localStorage.removeItem('carrinho');
+            carregarCarrinho(); // Atualiza a interface após o pagamento
+        }
+
+        function pagarComBoleto() {
+            let total = parseFloat(document.getElementById('total-valor').textContent);
+            // Simulação de geração de boleto
+            alert(`Boleto no valor de R$ ${total.toFixed(2)} gerado com sucesso! Verifique seu e-mail para mais detalhes.`);
+
+            // Limpar o carrinho após o pagamento, se necessário
+            localStorage.removeItem('carrinho');
+            carregarCarrinho(); // Atualiza a interface após o pagamento
         }
 
         function removerItem(nome, tamanho) {
             let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            carrinho = carrinho.filter(item => !(item.nome === nome && item.tamanho === tamanho));
+            let itemIndex = carrinho.findIndex(item => item.nome === nome && item.tamanho === tamanho);
+
+            if (itemIndex !== -1) {
+                carrinho.splice(itemIndex, 1);
+            }
+
             localStorage.setItem('carrinho', JSON.stringify(carrinho));
             carregarCarrinho();
         }
 
         document.addEventListener('DOMContentLoaded', carregarCarrinho);
+
+        // Adiciona os eventos de clique para os botões de pagamento
+        document.getElementById('btn-pagar-pix').addEventListener('click', pagarComPIX);
+        document.getElementById('btn-pagar-cartao').addEventListener('click', function () {
+            document.getElementById('cartao-container').style.display = 'block';
+            document.getElementById('boleto-container').style.display = 'none';
+        });
+        document.getElementById('btn-pagar-boleto').addEventListener('click', pagarComBoleto);
+
+        // Adiciona o evento de envio para o formulário de pagamento com cartão
+        document.getElementById('form-cartao').addEventListener('submit', pagarComCartao);
     </script>
+
+    <script>
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+        import { getAuth } from "firebase/auth";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDmJEyfaSfTQdyiGka6EDKWPCoGYrWUWWg",
+            authDomain: "lordsgeek-14c4f.firebaseapp.com",
+            projectId: "lordsgeek-14c4f",
+            storageBucket: "lordsgeek-14c4f.appspot.com",
+            messagingSenderId: "44590993034",
+            appId: "1:44590993034:web:576f27dc94159d92226773",
+            measurementId: "G-PJ4QVRS9LX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
 </body>
 
 </html>

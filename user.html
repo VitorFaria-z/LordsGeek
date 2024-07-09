@@ -6,7 +6,7 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Seu código de estilo existente */
+        /* Estilos gerais */
         * {
             margin: 0;
             padding: 0;
@@ -16,24 +16,28 @@
         body {
             background-color: #ffffff;
             font-family: Arial, sans-serif;
+            margin: 0; /* Removendo margem padrão do body */
+            padding: 0; /* Removendo preenchimento padrão do body */
+            min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+            display: flex;
+            flex-direction: column; /* Permite que o conteúdo expanda verticalmente */
+            background-image: url(fundolords.webp);
         }
 
         .logo img {
             margin-top: 1%;
             width: 120px;
         }
-
+        
         .container {
             display: flex;
             align-items: center;
-            padding: 0;
             background-color: #363531;
-            position: relative;
             color: rgb(243, 178, 38);
-            width: 100%;
             font-family: Impact;
             font-size: larger;
             padding-left: 40px;
+            padding-right: 40px; /* Adicionando padding direito para espaçamento lateral */
         }
 
         .options {
@@ -65,163 +69,350 @@
             cursor: pointer;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
-
         .main-content {
+            flex: 1; /* Faz com que o conteúdo principal ocupe todo o espaço restante */
             display: flex;
             justify-content: center;
             align-items: flex-start;
             padding: 20px;
         }
 
-        .flex-container {
-            width: 200px;
+        .form-container {
             background-color: #363531;
-            padding: 10px;
-            margin-right: 20px;
-            border-radius: 4px;
-        }
-
-        .flex-container h4 {
-            margin-bottom: 10px;
-            color: #fff; /* Cor do texto dos títulos */
-            font-size: 18px; /* Tamanho da fonte dos títulos */
-        }
-
-        .flex-container form,
-        .flex-container div {
-            margin-bottom: 10px;
-        }
-
-        .flex-container a {
-            text-decoration: none;
-            color: #363531; /* Cor do texto dos links */
-            font-size: 16px; /* Tamanho da fonte dos links */
-            padding: 5px;
-            background-color: rgb(243, 178, 38); /* Fundo dos links */
-            border-radius: 5px; /* Borda arredondada dos links */
-            display: block;
-            margin-bottom: 5px;
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            padding-bottom: 9px;
+            width: 100%;
+            max-width: 600px; /* Define uma largura máxima para o formulário */
         }
 
+        .form-container h1 {
+            color: rgb(243, 178, 38);
+        }
 
-        
+        .form-container input[type="email"],
+        .form-container input[type="password"],
+        .form-container input[type="text"] {
+            width: calc(100% - 20px); /* Ajusta a largura dos inputs com margens */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="text"] {
+            display: none;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(243, 178, 38);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #363531;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #cf4e02;
+            color: #fff;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .separator .line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #ccc;
+        }
+
+        .separator p {
+            margin: 0 10px;
+            color: rgb(243, 178, 38);
+        }
+
+        .sign-in_ggl {
+            background-color: rgb(243, 178, 38);
+            color: #363531;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .sign-in_ggl:hover {
+            background-color: #cf4e02;
+            color: #fff;
+        }
+
+        .sign-out {
+            padding: 10px;
+            background-color: #363531;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .sign-out:hover {
+            border-radius: 10px;
+            color: #cf4e02;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #adadad;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: space-around; /* Distribui os itens uniformemente */
+        }
+
+        .footer div {
+            margin: 0 10px;
+        }
+
+        .footer h3 {
+            color: rgb(243, 178, 38);
+        }
+
+        .footer p {
+            margin: 7px;
+        }
     </style>
-    <!-- Adicione o script de configuração do Firebase aqui -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    
-        const firebaseConfig = {
-        apiKey: "AIzaSyDmJEyfaSfTQdyiGka6EDKWPCoGYrWUWWg",
-        authDomain: "lordsgeek-14c4f.firebaseapp.com",
-        projectId: "lordsgeek-14c4f",
-        storageBucket: "lordsgeek-14c4f.appspot.com",
-        messagingSenderId: "44590993034",
-        appId: "1:44590993034:web:576f27dc94159d92226773",
-        measurementId: "G-PJ4QVRS9LX"
-        };
-    
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-    
-        // Função para verificar o estado de autenticação atual
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                console.log("Usuário logado: ", user);
-                // Exiba informações do usuário onde necessário
-                document.getElementById('user-info').textContent = `Bem-vindo, ${user.displayName}`;
-            } else {
-                console.log("Usuário não está logado.");
-                // Redirecione para a página de login ou faça algo apropriado
-            }
-        });
-    
-        document.addEventListener('DOMContentLoaded', function() {
-            const googleSignInBtn = document.getElementById('googleSignInBtn');
-            googleSignInBtn.addEventListener('click', function() {
-                const provider = new GoogleAuthProvider();
-                signInWithPopup(auth, provider)
-                    .then((result) => {
-                        const user = result.user;
-                        console.log("Usuário logado: ", user);
-                        // Redirecione para outra página
-                        window.location.href = "http://127.0.0.1:5500/loja.html"; // Substitua pela URL da página de destino
-                    })
-                    .catch((error) => {
-                        console.error("Erro ao fazer login: ", error);
-                    });
-            });
-        });
-    </script>
-    
 </head>
 <body>
-
-<div class="container">
-    <!-- Seu código HTML existente -->
-    <audio src="musica taverna.mp3" autoplay loop></audio>
-    <!--Musica de fundo-->
-    <div class="container" id="container">
-        <div class="logo">
-            <img src="logo lords.png" alt="Logo do site">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo lords.png" alt="Logo do site">
+            </div>
+            <div class="options">
+                <!-- Aqui está a parte de cima do site, as opções-->
+                <a href="inicio.html" style="text-decoration: none; color: inherit;">
+                    <p class="INICIO" id="inicio">INICIO</p>
+                </a>
+    
+                <a href="animes.html" style="text-decoration: none; color: inherit;">
+                    <p class="loja" id="loja">LOJA</p>
+                </a>
+    
+                <a href="ogg.html" style="text-decoration: none; color: inherit;">
+                    <p class="loja" id="OGG">OGG</p>
+                </a>
+    
+                <a href="evento.html" style="text-decoration: none; color: inherit;">
+                    <p class="evento" id="evento">EVENTO em breve!</p>
+                </a>
+    
+                <a href="sobre.html" style="text-decoration: none; color: inherit;">
+                    <p class="sobre" id="sobre">SOBRE NOS</p>
+                </a>
+    
+    
+                <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 453px;">
+                    <i class="fas fa-shopping-cart iconshop"></i>
+                    <!-- Ícone de carrinho de compras -->
+                </a>
+    
+                <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
+                    <i class="fas fa-user iconuser"></i>
+                    <!-- Ícone de usuário -->
+                </a>
+            </div>
+                <span id="user-info"></span> <!-- Mostra o email do usuário logado -->
+                <a href="#" id="signOutBtn" class="sign-out" style="display: none; text-decoration: none; color: inherit;">Sair</a>
+            </div>
         </div>
+    </header>
 
-        <div class="options">
-            <!-- Aqui está a parte de cima do site, as opções-->
-            <a href="inicio.html" style="text-decoration: none; color: inherit;">
-                <p class="INICIO" id="inicio">INICIO</p>
+    <div class="main-content">
+
+
+        <div class="form-container">
+            <h1>Login</h1>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Senha">
+            <input type="text" id="fullName" placeholder="Nome Completo" style="display: none;">
+            <input type="text" id="address" placeholder="Endereço" style="display: none;">
+            <input type="text" id="cpf" placeholder="CPF" style="display: none;">
+            <button id="signInBtn">Entrar</button>
+            <button id="createAccountBtn" style="display: none;">Criar Conta</button>
+            <button id="toggleSignUpBtn">Ainda não tem uma conta? Criar Conta</button>
+            <div class="separator">
+                <div class="line"></div>
+                <p>ou</p>
+                <div class="line"></div>
+            </div>
+            <div class="sign-in_ggl" id="googleSignInBtn">
+                <i class="fab fa-google"></i> Entrar com o Google
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Conteúdo do rodapé -->
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDmJEyfaSfTQdyiGka6EDKWPCoGYrWUWWg",
+            authDomain: "lordsgeek-14c4f.firebaseapp.com",
+            projectId: "lordsgeek-14c4f",
+            storageBucket: "lordsgeek-14c4f.appspot.com",
+            messagingSenderId: "44590993034",
+            appId: "1:44590993034:web:576f27dc94159d92226773",
+            measurementId: "G-PJ4QVRS9LX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+        const db = getFirestore(app); // Instância do Firestore
+
+        document.getElementById('googleSignInBtn').addEventListener('click', () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log('Usuário logado com o Google:', user);
+                    document.getElementById('user-info').innerText = user.email;
+                    document.getElementById('signOutBtn').style.display = 'block';
+                    document.getElementById('iconuser').style.display = 'none';
+                })
+                .catch((error) => {
+                    console.error('Erro ao fazer login com o Google:', error);
+                });
+        });
+
+        document.getElementById('signOutBtn').addEventListener('click', () => {
+            signOut(auth)
+                .then(() => {
+                    console.log('Usuário deslogado');
+                    document.getElementById('user-info').innerText = '';
+                    document.getElementById('signOutBtn').style.display = 'none';
+                    document.getElementById('iconuser').style.display = 'block';
+                })
+                .catch((error) => {
+                    console.error('Erro ao fazer logout:', error);
+                });
+        });
+
+        document.getElementById('signInBtn').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log('Usuário logado:', user);
+                    document.getElementById('user-info').innerText = user.email;
+                    document.getElementById('signOutBtn').style.display = 'block';
+                    document.getElementById('iconuser').style.display = 'none';
+                })
+                .catch((error) => {
+                    console.error('Erro ao fazer login:', error);
+                });
+        });
+
+        document.getElementById('createAccountBtn').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const fullName = document.getElementById('fullName').value;
+            const address = document.getElementById('address').value;
+            const cpf = document.getElementById('cpf').value;
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log('Conta criada:', user);
+                    document.getElementById('user-info').innerText = user.email;
+                    document.getElementById('signOutBtn').style.display = 'block';
+                    document.getElementById('iconuser').style.display = 'none';
+
+                    // Salvar dados adicionais no Firestore
+                    const userData = {
+                        email: email,
+                        fullName: fullName,
+                        address: address,
+                        cpf: cpf
+                    };
+                    return setDoc(doc(db, "users", user.uid), userData);
+                })
+                .then(() => {
+                    console.log('Dados do usuário salvos no Firestore');
+                })
+                .catch((error) => {
+                    console.error('Erro ao criar conta ou salvar dados no Firestore:', error);
+                });
+        });
+
+        document.getElementById('toggleSignUpBtn').addEventListener('click', () => {
+            const isCreatingAccount = document.getElementById('createAccountBtn').style.display === 'none';
+            document.getElementById('fullName').style.display = isCreatingAccount ? 'block' : 'none';
+            document.getElementById('address').style.display = isCreatingAccount ? 'block' : 'none';
+            document.getElementById('cpf').style.display = isCreatingAccount ? 'block' : 'none';
+            document.getElementById('createAccountBtn').style.display = isCreatingAccount ? 'block' : 'none';
+            document.getElementById('signInBtn').style.display = isCreatingAccount ? 'none' : 'block';
+            document.getElementById('toggleSignUpBtn').innerText = isCreatingAccount ? 'Já tem uma conta? Entrar' : 'Ainda não tem uma conta? Criar Conta';
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('Usuário logado:', user);
+                document.getElementById('user-info').innerText = user.email;
+                document.getElementById('signOutBtn').style.display = 'block';
+                document.getElementById('iconuser').style.display = 'none';
+            } else {
+                console.log('Ninguém logado');
+                document.getElementById('user-info').innerText = '';
+                document.getElementById('signOutBtn').style.display = 'none';
+                document.getElementById('iconuser').style.display = 'block';
+            }
+        });
+    </script>
+    <div class="footer">
+        <div>
+            <h3>Lord's Geek</h3>
+            <a href="inicio.html" style="text-decoration: none; color: #adadad;" >
+            <p>Home</p>
             </a>
-            <a href="loja.html" style="text-decoration: none; color: inherit;">
-                <p class="loja" id="loja">LOJA</p>
+            <a href="loja.html" style="text-decoration: none; color: #adadad;" >
+            <p>Loja</p>
             </a>
-            <a href="ogg.html" style="text-decoration: none; color: inherit;">
-                <p class="loja" id="OGG">OGG</p>
+            <a href="sobre.html" style="text-decoration: none; color: #adadad;" >
+            <p>Sobre</p>
             </a>
-            <a href="evento.html" style="text-decoration: none; color: inherit;">
-                <p class="evento" id="evento">EVENTO em breve!</p>
+            <p>Contato</p>
+        </div>
+        <div>
+            <h3>Experiência</h3>
+            <p>FAQ</p>
+            <p>Envio e Devoluções</p>
+            <p>Política da Loja</p>
+            <p>Métodos de Pagamento</p>
+        </div>
+        <div>
+            <h3>Siga-nos</h3>
+            <a href="https://www.instagram.com/lordsgeek.sc/" style="text-decoration: none; color: #adadad;;">
+            <p>Instagram</p>
             </a>
-            <a href="sobre.html" style="text-decoration: none; color: inherit;">
-                <p class="sobre" id="sobre">SOBRE NOS</p>
-            </a>
-            <a href="carrinho.html" style="text-decoration: none; color: inherit; margin-left: 773px;">
-                <i class="fas fa-shopping-cart iconshop"></i>
-                <!-- Ícone de carrinho de compras -->
-            </a>
-            <a href="user.html" style="text-decoration: none; color: inherit; margin-left: 50px;">
-                <i class="fas fa-user iconuser"></i>
-                <!-- Ícone de usuário -->
+            <a href="https://www.facebook.com/profile.php?id=61558965792629" style="text-decoration: none; color: #adadad;">
+            <p>Facebook</p>
             </a>
         </div>
     </div>
-</div>
-
-<div class="main_content">
-    <div class="form_container">
-        <div class="title_container">
-            <h1 class="title">Bem-vindo de volta!</h1>
-            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-
-        <div class="separator">
-            <div class="line"></div>
-            <p>ou</p>
-            <div class="line"></div>
-        </div>
-
-        <a class="sign-in_ggl" id="googleSignInBtn"><i class="fab fa-google"></i>Sign in with Google</a>
-        <button class="sign-in_apl"><i class="fab fa-facebook"></i>Sign in with Facebook</button>
-
-        <p class="note"><a href="#">Criar Conta</a></p>
-        <p class="note"><a href="#">Esqueceu a senha?</a></p>
-        <p id="user-info" class="note"></p> <!-- Adicionado para exibir informações do usuário -->
-    </div>
-</div>
-
-<div class="footer">
-    <!-- Seu código HTML existente -->
-</div>
-
+    <!--barra na parte final da pagina-->
 </body>
 </html>

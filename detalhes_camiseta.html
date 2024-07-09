@@ -17,6 +17,7 @@
         body {
             background-color: #ffffff;
             font-family: Arial, sans-serif;
+            background-image: url(fundolords.webp);
         }
 
         .logo img {
@@ -92,7 +93,7 @@
         }
 
         .card h2 {
-            color: rgb(243, 178, 38);
+            color: #363531;
             font-size: 24px;
             margin-bottom: 10px;
             text-align: center;
@@ -164,6 +165,29 @@
             background-color: rgb(243, 178, 38);
             color: #ffffff;
         }
+        .footer {
+            background-color: #333;
+            color: #adadad;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: space-around; /* Distribui os itens uniformemente */
+        }
+
+        .footer div {
+            margin: 0 10px;
+        }
+
+        .footer h3 {
+            color: rgb(243, 178, 38);
+        }
+
+        .footer p {
+            margin: 7px;
+        }
     </style>
 </head>
 
@@ -177,7 +201,7 @@
             <a href="inicio.html" style="text-decoration: none; color: inherit;">
                 <p class="INICIO" id="inicio">INICIO</p>
             </a>
-            <a href="loja.html" style="text-decoration: none; color: inherit;">
+            <a href="animes.html" style="text-decoration: none; color: inherit;">
                 <p class="loja" id="loja">LOJA</p>
             </a>
             <a href="ogg.html" style="text-decoration: none; color: inherit;">
@@ -216,8 +240,7 @@
                     <a href="animes.html">
                         <button class="buttons" style="border: none">Voltar para a Loja</button>
                     </a>
-                    <button class="buy" style="border: none">COMPRAR</button>
-                    <p id="valor_camiseta" style="padding-left: 40px; padding-top: 20px;">Valor 110,00</p>
+                    <p id="valor_camiseta" style="padding-left: 40px; padding-top: 20px;">Valor 109,90</p>
                 </div>
             </div>
         </div>
@@ -242,20 +265,146 @@
         // Exibir detalhes da camiseta
         function exibirDetalhesCamiseta(camiseta) {
             let camisetaDetalhes = {};
-
+            
             if (camiseta === "Aiolos") {
                 camisetaDetalhes = {
                     nome: "Camiseta Aiolos",
-                    frente: "CamisetasZoom/CamisetaAilosZoomFrente.webp",
-                    costa: "CamisetasZoom/CamisetaAilosZoomCosta.webp",
-                    preco: 110.00
+                    frente: "CamisetasZoom/CamisetasCDZ/CamisetaAilosZoomFrente.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/CamisetaAilosZoomCosta.webp",
+                    preco: 109.90
                 };
             } else if (camiseta === "Aiolia") {
                 camisetaDetalhes = {
                     nome: "Camiseta Aiolia",
-                    frente: "CamisetasZoom/CamisetaAioliaZoomFrente.webp",
-                    costa: "CamisetasZoom/CamisetaAioliaZoomCosta.webp",
-                    preco: 110.00
+                    frente: "CamisetasZoom/CamisetasCDZ/CamisetaAioliaZoomFrente.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/CamisetaAioliaZoomCosta.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Albafica") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Albafica",
+                    frente: "CamisetasZoom/CamisetasCDZ/ALBAFICAFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/ALBAFICA.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Dohko") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Dohko",
+                    frente: "CamisetasZoom/CamisetasCDZ/DOHKOFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/DOHKO.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Elcid") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Elcid",
+                    frente: "CamisetasZoom/CamisetasCDZ/ELCIDFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/ELCID.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Hasgard") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Hasgard",
+                    frente: "CamisetasZoom/CamisetasCDZ/HASGARD-FRT-LOGO.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/HASGARD-CST.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Hyoga") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Hyoga",
+                    frente: "CamisetasZoom/CamisetasCDZ/HYOGAFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/HYOGA.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Ikki") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Ikki",
+                    frente: "CamisetasZoom/CamisetasCDZ/IKKIFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/IKKI.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Kamus") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Kamus",
+                    frente: "CamisetasZoom/CamisetasCDZ/KAMUSFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/KAMUS.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Kardia") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Kardia",
+                    frente: "CamisetasZoom/CamisetasCDZ/KARDIAFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/KARDIA.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Manigold") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Manigold",
+                    frente: "CamisetasZoom/CamisetasCDZ/MANIGOLDFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/MANIGOLD.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Mu") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Mu",
+                    frente: "CamisetasZoom/CamisetasCDZ/MUFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/MU.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Radamanthys") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Radamanthys",
+                    frente: "CamisetasZoom/CamisetasCDZ/RADAMANTHYS-FRT-LOGO.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/RADAMANTHYS-CST.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Saga") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Saga",
+                    frente: "CamisetasZoom/CamisetasCDZ/SAGAFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/SAGA.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Seiya") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Seiya",
+                    frente: "CamisetasZoom/CamisetasCDZ/SEIYAFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/SEIYA.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Shakka") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shakka",
+                    frente: "CamisetasZoom/CamisetasCDZ/SHAKKAFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/SHAKKA.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Shion") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shion",
+                    frente: "CamisetasZoom/CamisetasCDZ/SHIONFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/SHION.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Shiryu") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shiryu",
+                    frente: "CamisetasZoom/CamisetasCDZ/SHIRYUFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/SHIRYU.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Shun") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shun",
+                    frente: "CamisetasZoom/CamisetasCDZ/SHUN DE ANDRÔMEDAFRENTE.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/SHUN DE ANDRÔMEDA.webp",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Shun Hades") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shun Hades",
+                    frente: "CamisetasZoom/CamisetasCDZ/SHUN-HADES-FRT-LOGO.webp",
+                    costa: "CamisetasZoom/CamisetasCDZ/SHUN-HADES-CST.webp",
+                    preco: 109.90
                 };
             } else {
                 document.getElementById("imagem_camiseta_frente").alt = "Camiseta não encontrada";
@@ -289,15 +438,119 @@
             if (camiseta === "Aiolos") {
                 camisetaDetalhes = {
                     nome: "Camiseta Aiolos",
-                    preco: 110.00
+                    preco: 109.90
                 };
             } else if (camiseta === "Aiolia") {
                 camisetaDetalhes = {
                     nome: "Camiseta Aiolia",
-                    preco: 110.00
+                    preco: 109.90
+                };
+            } else if (camiseta === "Albafica") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Albafica",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Dohko") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Dohko",
+                    preco: 109.90
+                };
+            } else if (camiseta === "Elcid") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Elcid",
+                    preco: 109.90
                 };
             }
-
+            else if (camiseta === "Hasgard") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Hasgard",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Hyoga") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Hyoga",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Ikki") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Ikki",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Kamus") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Kamus",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Kardia") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Kardia",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Manigold") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Manigold",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Mu") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Mu",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Radamanthys") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Radamanthys",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Saga") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Saga",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Seiya") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Seiya",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Shakka") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shakka",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Shion") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shion",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Shiryu") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shiryu",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Shun") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shun",
+                    preco: 109.90
+                };
+            }
+            else if (camiseta === "Shun Hades") {
+                camisetaDetalhes = {
+                    nome: "Camiseta Shun Hades",
+                    preco: 109.90
+                };
+            }
             let item = {
                 nome: camisetaDetalhes.nome,
                 tamanho: tamanho.id,
@@ -325,6 +578,38 @@
             document.querySelector('.add-to-cart').addEventListener('click', adicionarAoCarrinho);
         });
     </script>
+        <div class="footer">
+            <div>
+                <h3>Lord's Geek</h3>
+                <a href="inicio.html" style="text-decoration: none; color: #adadad;" >
+                <p>Home</p>
+                </a>
+                <a href="loja.html" style="text-decoration: none; color: #adadad;" >
+                <p>Loja</p>
+                </a>
+                <a href="sobre.html" style="text-decoration: none; color: #adadad;" >
+                <p>Sobre</p>
+                </a>
+                <p>Contato</p>
+            </div>
+            <div>
+                <h3>Experiência</h3>
+                <p>FAQ</p>
+                <p>Envio e Devoluções</p>
+                <p>Política da Loja</p>
+                <p>Métodos de Pagamento</p>
+            </div>
+            <div>
+                <h3>Siga-nos</h3>
+                <a href="https://www.instagram.com/lordsgeek.sc/" style="text-decoration: none; color: #adadad;;">
+                <p>Instagram</p>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61558965792629" style="text-decoration: none; color: #adadad;">
+                <p>Facebook</p>
+                </a>
+            </div>
+        </div>
+        <!--barra na parte final da pagina-->
 </body>
 
 </html>
